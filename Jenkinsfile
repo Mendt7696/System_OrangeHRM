@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Mendt7696/System_OrangeHRM.git'
+                git branch : 'Selenium-WebDriver', url: 'https://github.com/Mendt7696/System_OrangeHRM.git'
             }
         }
 
