@@ -44,12 +44,7 @@
 
         </plugins>
     </build>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>allure</id>
-            <url>https://plugins.gradle.org/m2/</url>
-        </pluginRepository>
-    </pluginRepositories>
+
     <dependencies>
         <!-- Selenium -->
         <dependency>
