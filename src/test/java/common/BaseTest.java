@@ -2,9 +2,10 @@ package common;
 
 import config.ConfigReader;
 import driver.DriverManager;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
@@ -18,8 +19,8 @@ public class BaseTest {
     //WebDriver
     WebDriver driver;
 
-    @BeforeMethod
-    public void setUp() {
+    @BeforeClass
+    public void setUpGlobal() {
         DriverManager.initDriver();
         this.driver = DriverManager.getDriver();
 
@@ -34,18 +35,18 @@ public class BaseTest {
         this.login = new LoginPage(this.driver);
         // this.dashboard = new DashboardPage(this.driver);
         this.admin = new AdminPage(this.driver);
-    }
 
-    // ✅ Method dùng để login khi cần
-    public void loginToApplication() {
+        // ✅ Method dùng để login khi cần
         this.login.Login_userName("Admin");
-
         this.login.Login_Password("admin123");
-
         this.login.Click_LoginButton();
     }
+    public void scrollToElement(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
 
-    @AfterMethod
+    @AfterClass
     public void teardown() {
         DriverManager.quitDriver();
     }

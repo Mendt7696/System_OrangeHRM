@@ -19,7 +19,6 @@ public class LoginTest extends BaseTest {
     @Description("Test Description: Login with valid username and password")
     @Story("Valid login story")
     public void LoginSuccessful() {
-        loginToApplication();
         //Assert
         Assert.assertTrue(this.login.isDashboardDisplayed(), "Login Fail");
     }
